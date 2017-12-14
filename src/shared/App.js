@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Experiment, Variant } from 'react-ab-test';
 
 import {
   Route,
@@ -61,9 +62,18 @@ const Home = () => (
   <div className="App-intro">
     <p>Welcome to the homepage.</p>
     <p>You have been assigned test-variation <code>{variant}</code>.</p>
-    <Link to={`/test/123`}>
-      Test the router
-    </Link>
+    <p>The test variation above is set dynamically</p>
+    <Experiment name="Comment Link">
+      <Variant name="Original">
+        <h1>This is static content for Original</h1>
+      </Variant>
+      <Variant name="A">
+        <h1>This is static content for A</h1>
+      </Variant>
+      <Variant name="B">
+        <h1>This is static content for B</h1>
+      </Variant>
+    </Experiment>
   </div>
 )
 
